@@ -19,7 +19,7 @@ Resources:
         Type: AWS::Route53::HostedZone
         Properties:
             Name: !Sub ${ZoneAddress}.
-    GoogleMx:
+    GSuiteMx:
         DeletionPolicy: Retain
         Type: AWS::Route53::RecordSet
         Properties:
@@ -33,7 +33,7 @@ Resources:
                 - 5 ALT2.ASPMX.L.GOOGLE.COM.
                 - 10 ALT3.ASPMX.L.GOOGLE.COM.
                 - 10 ALT4.ASPMX.L.GOOGLE.COM.
-    GoogleSiteVerification:
+    GSuiteSiteVerification:
         Type: AWS::Route53::RecordSet
         Properties:
             HostedZoneId: !Ref Zone
