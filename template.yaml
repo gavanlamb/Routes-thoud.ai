@@ -21,17 +21,24 @@ Resources:
             Name: !Sub ${ZoneAddress}.
     GoogleMx:
         DeletionPolicy: Retain
-        Type: AWS::Route53::RecordSetGroup
+        Type: AWS::Route53::RecordSet
         Properties:
-            HostedZoneId:
-                Ref: Zone
-            RecordSets:
-                -   Name: !Sub ${ZoneAddress}.
-                    Type: MX
-                    TTL: '300'
-                    ResourceRecords:
-                        - 1 ASPMX.L.GOOGLE.COM.
-                        - 5 ALT1.ASPMX.L.GOOGLE.COM.
-                        - 5 ALT2.ASPMX.L.GOOGLE.COM.
-                        - 10 ALT3.ASPMX.L.GOOGLE.COM.
-                        - 10 ALT4.ASPMX.L.GOOGLE.COM.
+            HostedZoneId: !Ref Zone
+            Name: !Sub ${ZoneAddress}.
+            Type: MX
+            TTL: '300'
+            ResourceRecords:
+                - 1 ASPMX.L.GOOGLE.COM.
+                - 5 ALT1.ASPMX.L.GOOGLE.COM.
+                - 5 ALT2.ASPMX.L.GOOGLE.COM.
+                - 10 ALT3.ASPMX.L.GOOGLE.COM.
+                - 10 ALT4.ASPMX.L.GOOGLE.COM.
+    GoogleSiteVerification:
+        Type: AWS::Route53::RecordSet
+        Properties:
+            HostedZoneId: !Ref Zone
+            Name: ''
+            Type: TXT
+            TTL: '300'
+            ResourceRecords:
+                - '"google-site-verification=vgmhP_tctPZJ7C_yJdGOZVpU186J6kpF5IU073iTaWU"'
