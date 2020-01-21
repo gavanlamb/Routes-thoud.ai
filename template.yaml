@@ -15,12 +15,10 @@ Outputs:
             Name: ThoudAiRoutes:ZoneId
 Resources:
     Zone:
-        DeletionPolicy: Retain
         Type: AWS::Route53::HostedZone
         Properties:
             Name: !Sub ${ZoneAddress}.
     GSuiteMx:
-        DeletionPolicy: Retain
         Type: AWS::Route53::RecordSet
         Properties:
             HostedZoneId: !Ref Zone
